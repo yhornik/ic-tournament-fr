@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <div class="example-button-container">
+        <button mat-mini-fab color="primary" aria-label="Example icon button with a home icon"
+            routerLink="/home">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div class="example-button-container">
+      <button mat-mini-fab color="primary" aria-label="Example icon button with a how_to_reg_outline icon"
+            routerLink="/players">
+        <mat-icon>how_to_reg_outline</mat-icon>
+      </button>
+    </div>
+      <div class="example-button-container">
+        <button mat-mini-fab color="warn" aria-label="Example icon button with a place_outline icon"
+            routerLink="/composition">
+          <mat-icon>place_outline</mat-icon>
+        </button>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Interclub Tournament France</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
